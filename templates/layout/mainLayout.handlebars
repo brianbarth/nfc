@@ -1,13 +1,70 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
   <meta http-equiv="X-UA-Compatible" content="ie=edge">
   <title>NodeJsFlashCard</title>
-  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm"
+    crossorigin="anonymous">
 </head>
+
 <body>
-  
+  <!-- jumbotron -->
+  <header>
+    <div class="container">
+      <div class="jumbotron py-1 py-sm-4 text-center mt-3">
+        <div class="row">
+          <div class="col">
+            <h1>High-Frequency Words</h1>
+          </div>
+        </div>
+      </div>
+    </div>
+  </header>
+  <!-- end of jumbotron -->
+  <!-- navigation -->
+  <div class="container pb-4">
+    <nav class="navbar navbar-expand navbar-dark bg-dark justify-content-between">
+      <div class="navbar-brand">HOME</div>
+      <div style="width: 100%"></div>
+      <div class="navbar-collapse collapse" id="navbarNav">
+        <ul class="navbar-nav">
+          <?php if ( $_SESSION['loggedin'] == true && $_SESSION['superUser'] == true ) : ?>
+          <li class="nav-item">
+            <a class="nav-link" href='admin.php'>ADMIN</a>
+          </li>
+          <?php endif ?>
+          <?php if ( $_SESSION['loggedin'] == !true ) : ?>
+          <li class="nav-item">
+            <a class="nav-link" href="login.php">LOGIN</a>
+          </li>
+          <? endif ?>
+            <?php if ( $_SESSION['loggedin'] == true ) : ?>
+            <li class="nav-item">
+              <a class="nav-link" href='logout.php'>LOGOUT</a>
+            </li>
+            <?php endif ?>
+        </ul>
+      </div>
+    </nav>
+  </div>
+  <!-- end of navigation -->
+
+  {{content}}
+
+  <footer>
+    <!-- footer -->
+    <div class='container-fluid mt-4 pt-6 bg-light text-dark fixed-bottom'>
+      <div class='row justify-content-center'>
+        <div class 'col'>
+          <p>Copyright &copy 2017 Brian Barth</p>
+        </div>
+      </div>
+    </div>
+  </footer>
+  <!-- end of footer -->
 </body>
+
 </html>

@@ -1,0 +1,25 @@
+<main>
+  <!-- FORM for adding new word -->
+  <div class="container">
+    <form class="padding" action='new.php' method='post'>
+      <?php   if ( isset( $errors['name'])) {
+                        echo "<div class='form-group' id='eb'>";
+                    } else {
+                        echo "<div class='form-group'>";
+                    }      
+            ?>
+      <label for="name">ADD WORD</label>
+
+      <?php if ( count($errors) == 0 ) : ?>
+      <input class="form-control" type='text' name='word' id='word' value=''>
+      <?php else : ?>
+      <input class="form-control border border-danger" type='text' name='word' id='word' value=''>
+      <?php endif ?>
+
+  </div>
+
+  <button class="btn btn-primary" type='submit'>Add</button>
+  </form>
+  </div>
+
+</main>

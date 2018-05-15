@@ -1,0 +1,23 @@
+<main>
+  <!-- FORM update -->
+  <div class="container">
+    <form action="update.php?id=<?php echo $data->id ?>" method='post'>
+      <?php   if ( isset( $errors['word'])) {
+                            echo "<div class='form-group' id='eb'>";
+                        } else {
+                            echo "<div class='form-group'>";
+                        }
+            ?>
+      <label for="name">
+        <?php echo 'selected word: ' . $name ?>
+      </label>
+      <?php if ( count($errors) == 0 ) : ?>
+      <input class="form-control" type='text' name='word' id='word' value=''>
+      <?php else : ?>
+      <input class="form-control border border-danger" type='text' name='word' id='word' value=''>
+      <?php endif ?>
+  </div>
+  <button class="btn btn-primary" type='submit'>Update</button>
+  </form>
+  </div>
+</main>
