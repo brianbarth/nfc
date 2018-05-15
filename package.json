@@ -1,0 +1,15 @@
+{
+  "name": "nfc",
+  "version": "1.0.0",
+  "description": "flash_card_learning_tool",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "brian_barth",
+  "license": "ISC",
+  "dependencies": {
+    "hapi": "^17.4.0",
+    "inert": "^5.1.0"
+  }
+}
