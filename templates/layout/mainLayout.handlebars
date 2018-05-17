@@ -14,7 +14,7 @@
   <!-- jumbotron -->
   <header>
     <div class="container">
-      <div class="jumbotron py-1 py-sm-4 text-center mt-3">
+      <div class="jumbotron py-1 py-sm-4 text-center mt-2">
         <div class="row">
           <div class="col">
             <h1>High-Frequency Words</h1>
@@ -31,28 +31,31 @@
       <div style="width: 100%"></div>
       <div class="navbar-collapse collapse" id="navbarNav">
         <ul class="navbar-nav">
-          <?php if ( $_SESSION['loggedin'] == true && $_SESSION['superUser'] == true ) : ?>
-          <li class="nav-item">
-            <a class="nav-link" href='admin.php'>ADMIN</a>
+          {{!-- <?php if ( $_SESSION['loggedin'] == true && $_SESSION['superUser'] == true ) : ?>
+          <li class="nav-item"> --}}
+            <a class="nav-link" href='admin.html'>ADMIN</a>
           </li>
-          <?php endif ?>
-          <?php if ( $_SESSION['loggedin'] == !true ) : ?>
+          {{!-- <?php endif ?>
+          <?php if ( $_SESSION['loggedin'] == !true ) : ?> --}}
           <li class="nav-item">
-            <a class="nav-link" href="login.php">LOGIN</a>
+            <a class="nav-link" href="login.html">LOGIN</a>
           </li>
-          <? endif ?>
-            <?php if ( $_SESSION['loggedin'] == true ) : ?>
+          {{!-- <? endif ?>
+            <?php if ( $_SESSION['loggedin'] == true ) : ?> --}}
             <li class="nav-item">
-              <a class="nav-link" href='logout.php'>LOGOUT</a>
+              <a class="nav-link" href='logout.html'>LOGOUT</a>
             </li>
-            <?php endif ?>
+            {{!-- <?php endif ?> --}}
+            <li class='nav-item'>
+              <a class='nav-link' href='/'>HOME</a>
+            </li>
         </ul>
       </div>
     </nav>
   </div>
   <!-- end of navigation -->
 
-  {{content}}
+  {{{content}}}
 
   <footer>
     <!-- footer -->

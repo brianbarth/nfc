@@ -1,23 +1,43 @@
+<style>
+  #sightWord {
+    background-image: url("/images/indexCard.jpg"); 
+    background-repeat: no-repeat;
+    background-size: contain;
+    background-position: center;
+    background-size: auto;
+    text-align: center;
+    line-height: 140px;
+    font-family: 'Didact Gothic', sans-serif;
+    text-shadow: #6D7575 2px 2px 2px; 
+    font-size: 5rem;
+    padding: 0 50px 10px 50px;
+    border-right: 1px solid black;
+    border-bottom: 1px solid black;
+    border-left: 1px solid lightgray;
+    border-top: 1px solid lightgray;
+    box-shadow: 2px 2px 2px rgb(155, 152, 152);
+  }
+</style>
+
 <!-- word container -->
+
 <div class='container bg-light'>
   <div class='row'>
-    <div class='col mh-75 m-auto'>
-      <div class="d-flex justify-content-center mt-4">
-        <p id="sightWord">
-          <?php echo $word ?>
-        </p>
+      <div class='col mh-75 m-auto'>
+          <div class="d-flex justify-content-center mt-4">
+              <p id="sightWord">{{word}}</p>
+          </div>
       </div>
-    </div>
+  </div>
+  <div class='row justify-content-center'> 
+      <div class='col-6 col-sm-4'>
+          <button class="btn btn-primary w-100 my-4" type="button" onclick=>NEXT WORD</button>
+      </div>
   </div>
   <div class='row justify-content-center'>
-    <div class='col-6 col-sm-4'>
-      <button class="btn btn-primary w-100 my-4" type="button" onclick="nextWord(words)">NEXT WORD</button>
-    </div>
-  </div>
-  <div class='row justify-content-center'>
-    <div class='col-6 col-sm-4 pb-4'>
-      <button class="btn btn-primary w-100 mb-4" id='button2' type="button">SAY WORD</button>
-    </div>
+      <div class='col-6 col-sm-4 pb-4'>
+          <button class="btn btn-primary w-100 mb-4" id='button2' type="button">SAY WORD</button>
+      </div>
   </div>
 </div>
 <!-- end of word container -->
