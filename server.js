@@ -36,6 +36,7 @@ const start = async () => {
     path: '/',
     handler: function (request, h) {
       let array = wordData.words;
+      console.log(array);
       let word = array[Math.floor(Math.random()*array.length)];
       return h.view('index', {word, array}, viewOptions);
     }

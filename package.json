@@ -17,6 +17,6 @@
   "author": "brian_barth",
   "license": "ISC",
   "nodemonConfig": {
-    "ext": "js,handlebars"
+    "ext": "js,handlebars,json"
   }
 }
