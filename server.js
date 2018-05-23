@@ -39,7 +39,6 @@ const start = async () => {
       let word = array[Math.floor(Math.random()*array.length)];
       let newArray = JSON.stringify(wordData.words);
       
-      
       return h.view('index', {word, newArray}, viewOptions);
     }
   });
@@ -59,7 +58,9 @@ const start = async () => {
     handler: function (request, h) {
       const totalWords = wordData.words.length;
       const words = wordData.words;
-      return h.view('admin', {words, totalWords}, viewOptions);
+      const name ="BRIAN";
+
+      return h.view('admin', {words, totalWords, name}, viewOptions);
 
     }
 
