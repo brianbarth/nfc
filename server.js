@@ -17,6 +17,7 @@ const server = Hapi.server({
 });
 
 const viewOptions = {layout: 'mainLayout'};
+
 const start = async () => {
   await server.register(Inert);
   await server.register(Vision);
@@ -38,11 +39,27 @@ const start = async () => {
       let array = wordData.words;
       let word = array[Math.floor(Math.random()*array.length)];
       let newArray = JSON.stringify(wordData.words);
+      let loggedIn = false;
+      let home = false;
       
-      return h.view('index', {word, newArray}, viewOptions);
+      return h.view('index', {word, newArray, loggedIn, home}, viewOptions);
     }
   });
-/* added semicolons to 38, 47 and similar */
+
+  server.route ({
+    method: 'POST',
+    path: '/',
+    handler: function (request, h) {
+      let array = wordData.words;
+      let word = array[Math.floor(Math.random()*array.length)];
+      let newArray = JSON.stringify(wordData.words);
+      let loggedIn = true;
+      let home = false;
+      
+      return h.view('index', {word, newArray, loggedIn, home}, viewOptions);
+    }
+  });
+
   server.route ({
     method: 'GET',
     path: '/login.html',
@@ -58,9 +75,10 @@ const start = async () => {
     handler: function (request, h) {
       const totalWords = wordData.words.length;
       const words = wordData.words;
-      const name ="BRIAN";
+      let loggedIn = true;
+      let home = true;
 
-      return h.view('admin', {words, totalWords, name}, viewOptions);
+      return h.view('admin', {words, totalWords, loggedIn, home}, viewOptions);
 
     }
 

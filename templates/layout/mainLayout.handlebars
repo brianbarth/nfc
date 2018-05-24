@@ -31,27 +31,26 @@
       <div style="width: 100%"></div>
       <div class="navbar-collapse collapse" id="navbarNav">
         <ul class="navbar-nav">
-          {{!-- <?php if ( $_SESSION['loggedin'] == true && $_SESSION['superUser'] == true ) : ?>
-          <li class="nav-item"> --}}
-            <a class="nav-link" href='admin.html'>ADMIN</a>
-          </li>
-          {{!-- <?php endif ?>
-          <?php if ( $_SESSION['loggedin'] == !true ) : ?> --}}
-          <li class="nav-item">
-            <a class="nav-link" href="login.html">LOGIN</a>
-          </li>
-          {{!-- <? endif ?>
-            <?php if ( $_SESSION['loggedin'] == true ) : ?> --}}
+          {{#if loggedIn}}
+            <li class="nav-item"> 
+              <a class="nav-link" href='admin.html'>ADMIN</a>
+            </li>
             <li class="nav-item">
               <a class="nav-link" href='logout.html'>LOGOUT</a>
-            </li>
-            {{!-- <?php endif ?> --}}
-            <li class='nav-item'>
-              <a class='nav-link' href='/'>HOME</a>
             </li>
             <li class='nav-item'>
               <a class='nav-link' href='/'>{{name}}</a>
             </li>
+          {{else}}
+            <li class="nav-item">
+              <a class="nav-link" href="login.html">LOGIN</a>
+            </li>
+          {{/if}}
+          {{#if home}} 
+            <li class='nav-item'>
+              <a class='nav-link' href='/'>HOME</a>
+            </li>
+          {{/if}}
         </ul>
       </div>
     </nav>
