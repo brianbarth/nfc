@@ -6,6 +6,9 @@ const Path = require('path');
 const Vision = require('vision');
 const wordData = require('./static/wordData.json');
 
+const loggedCookie = 'monkeyIsLoggedIn';
+const messageCookie = 'monkeyMessage';
+
 const server = Hapi.server({
   port: 4000,
   routes: {
@@ -32,6 +35,23 @@ const start = async () => {
     helpersPath: 'templates/helpers'
   });
 
+  server.state(loggedCookie, {
+    isSecure: false,
+    isHttpOnly: true,
+    encoding: 'none',
+    clearInvalid: false, // remove invalid cookies
+    strictHeader: false // don't allow violations of RFC 6265
+  });
+
+  server.state(messageCookie, {
+    isSecure: false,
+    isHttpOnly: true,
+    encoding: 'none',
+    clearInvalid: false, // remove invalid cookies
+    strictHeader: false // don't allow violations of RFC 6265
+  });
+
+
   server.route ({
     method: 'GET',
     path: '/',
@@ -39,10 +59,13 @@ const start = async () => {
       let array = wordData.words;
       let word = array[Math.floor(Math.random()*array.length)];
       let newArray = JSON.stringify(wordData.words);
-      let loggedIn = false;
+      let loggedIn = request.state[loggedCookie] === 'true';
       let home = false;
+
+      let message = request.state[messageCookie] || false;
+      h.state(messageCookie, null)
       
-      return h.view('index', {word, newArray, loggedIn, home}, viewOptions);
+      return h.view('index', {word, newArray, loggedIn, home, message}, viewOptions);
     }
   });
 
@@ -53,10 +76,20 @@ const start = async () => {
       let array = wordData.words;
       let word = array[Math.floor(Math.random()*array.length)];
       let newArray = JSON.stringify(wordData.words);
-      let loggedIn = true;
+
+      const { username, password} = request.payload;
+
+      let loggedIn = (username === 'brian' && password === 'monkey');
+
       let home = false;
+
+      h.state(loggedCookie, loggedIn ? 'true' : 'false');
+
+      if(loggedIn){
+        return h.view('index', {word, newArray, loggedIn, home}, viewOptions);
+      }
       
-      return h.view('index', {word, newArray, loggedIn, home}, viewOptions);
+      return h.view('login', {word, newArray, loggedIn, home}, viewOptions);
     }
   });
 
@@ -71,17 +104,58 @@ const start = async () => {
 
   server.route ({
     method: 'GET',
+    path: '/user/new',
+    handler: function (request, h) {
+      const user = {firstName: null, lastname: null};
+      return h.view('editUser', user, viewOptions)
+    }
+  });
+
+  server.route ({
+    method: 'GET',
+    path: '/user/{id}',
+    handler: function (request, h) {
+      const user = {firstName: 'Bridan', lastName: 'barth'};
+      return h.view('editUser', user, viewOptions)
+    }
+  });
+
+
+
+  server.route ({
+    method: 'GET',
     path: '/admin.html',
     handler: function (request, h) {
       const totalWords = wordData.words.length;
       const words = wordData.words;
-      let loggedIn = true;
+      let loggedIn = request.state[loggedCookie] === 'true';
       let home = true;
+
+      if(!loggedIn){
+        return h.view('login', {words, totalWords, loggedIn, home}, viewOptions);
+      }
+
+      
 
       return h.view('admin', {words, totalWords, loggedIn, home}, viewOptions);
 
     }
 
+  });
+
+  server.route ({
+    method: 'GET',
+    path: '/logout.html',
+    handler: function (request, h) {
+      let loggedIn = false;
+      let home = true;
+
+      h.state(loggedCookie, 'false');
+      h.state(messageCookie, "You have been logged out.");
+
+      return h.redirect('/')
+
+    }
   });
 
   server.route({    /*static file route!!!!!!!!!!!!!!!!!!*/

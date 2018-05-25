@@ -32,35 +32,36 @@
       <div class="navbar-collapse collapse" id="navbarNav">
         <ul class="navbar-nav">
           {{#if loggedIn}}
-            <li class="nav-item"> 
-              <a class="nav-link" href='admin.html'>ADMIN</a>
-            </li>
-            <li class="nav-item">
-              <a class="nav-link" href='logout.html'>LOGOUT</a>
-            </li>
-            <li class='nav-item'>
-              <a class='nav-link' href='/'>{{name}}</a>
-            </li>
+          <li class="nav-item">
+            <a class="nav-link" href='/admin.html'>ADMIN</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href='/logout.html'>LOGOUT</a>
+          </li>
+          <li class='nav-item'>
+            <a class='nav-link' href='/'>{{name}}</a>
+          </li>
           {{else}}
-            <li class="nav-item">
-              <a class="nav-link" href="login.html">LOGIN</a>
-            </li>
-          {{/if}}
-          {{#if home}} 
-            <li class='nav-item'>
-              <a class='nav-link' href='/'>HOME</a>
-            </li>
+          <li class="nav-item">
+            <a class="nav-link" href="/login.html">LOGIN</a>
+          </li>
+          {{/if}} {{#if home}}
+          <li class='nav-item'>
+            <a class='nav-link' href='/'>HOME</a>
+          </li>
           {{/if}}
         </ul>
       </div>
     </nav>
-    </div>
-  
+  </div>
+  {{#if message}}
+  <div class="alert">{{message}}</div>
+  {{/if}}
   <!-- end of navigation -->
   <div class='container'>
-  {{{content}}}
+    {{{content}}}
   </div>
-  
+
 
   <footer>
     <!-- footer -->
