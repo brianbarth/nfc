@@ -12,33 +12,15 @@
     </div>
   </form>
 </div>
-<!--  code for flash box -->
-{{!-- <?php if ($_SESSION['flash']['type'] == 'alert' ) : ?> --}}
-<!--  code for flash box -->
-<div class='container'>
-  <div class='alert alert-danger text-center' role='alert'>
-    {{!-- <?php endif ?>
-    <?php if ($_SESSION['flash']['type'] == 'notice' ) : ?> --}}
-    <div class='container'>
-      <div class='alert alert-success text-center' role='alert'>
-        {{!-- <?php endif ?>
-        <?php
-          if (isset($_SESSION['flash'])) {             
-              echo '<p>' . $_SESSION['flash']['message'] . '</p>';
-              echo '</div';
-              echo '</div>';
-              // unset($_SESSION['flash']);
-          } 
-      ?> --}}
-      </div>
-      <main>
-        <!-- cue and total words -->
-        {{!-- <?php if ( ! isset($_SESSION['flash']) ) : ?> --}}
-        <!-- click on word message dissapears w/flash set -->
-        
-        {{!-- <?php endif ?>
-        <?php unset($_SESSION['flash']); ?> --}}
 
+<div class='container'>
+  {{!-- <div class='alert alert-danger text-center' role='alert'></div> --}}
+ 
+    
+      {{!-- <div class='alert alert-success text-center' role='alert'></div> --}}
+
+
+      <main>
         <div class="container text-center">
           <div class="row-12">
             <div class="col text-center text-sm-left">
@@ -46,14 +28,15 @@
             </div>
           </div>
         </div>
-        <!-- scroll box -->
-        <div class="container" id="scrollBox">
-      <div class="row no-gutters flex-wrap py-3">
-        {{#each words}}
-          <div class='col-6 col-sm-4 col-md-2 text-center py-1' style='list-style: none;'>
-           <a href="">{{this}}</a>
-          </div>               
-        {{/each}}
-      </div>
-    </div>
+     
+        <div class="container border" id="scrollBox">
+          <div class="row no-gutters flex-wrap py-3">
+            {{#each words}}
+              <div class='col-6 col-sm-4 col-md-2 text-center py-1' style='list-style: none;'>
+                <a href="/edit.html">{{this}}</a>
+              </div>               
+            {{/each}}
+          </div>
+        </div>
       </main>
+</div>

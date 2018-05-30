@@ -158,6 +158,27 @@ const start = async () => {
     }
   });
 
+  server.route ({
+    method: 'GET',
+    path: '/edit.html',
+    handler: function (request, h) {
+      const totalWords = wordData.words.length;
+      const words = wordData.words;
+      let loggedIn = request.state[loggedCookie] === 'true';
+      let home = true;
+
+      if(!loggedIn){
+        return h.view('login', {words, totalWords, loggedIn, home}, viewOptions);
+      }
+
+      
+
+      return h.view('edit', {words, totalWords, loggedIn, home}, viewOptions);
+
+    }
+
+  });
+
   server.route({    /*static file route!!!!!!!!!!!!!!!!!!*/
     method: 'GET',
     path: '/{param*}',
