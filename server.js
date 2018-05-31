@@ -51,7 +51,6 @@ const start = async () => {
     strictHeader: false // don't allow violations of RFC 6265
   });
 
-
   server.route ({
     method: 'GET',
     path: '/',
@@ -177,6 +176,18 @@ const start = async () => {
 
     }
 
+  });
+
+  server.route ({
+    method: 'GET',
+    path: '/users.html',
+    handler: function (request, h) {
+
+      let loggedIn = request.state[loggedCookie] === 'true';
+      let home = true;
+      
+      return h.view('users', {loggedIn, home}, viewOptions)
+    }
   });
 
   server.route({    /*static file route!!!!!!!!!!!!!!!!!!*/

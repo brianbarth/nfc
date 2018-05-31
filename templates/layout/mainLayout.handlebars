@@ -13,7 +13,7 @@
 <body>
   <!-- jumbotron -->
   <header>
-    <div class="container">
+    <div class="container-fluid">
       <div class="jumbotron py-1 py-sm-4 text-center mt-2">
         <div class="row">
           <div class="col">
@@ -27,13 +27,15 @@
   <!-- navigation -->
   <div class="container pb-4">
     <nav class="navbar navbar-expand navbar-dark bg-dark justify-content-between">
-      <div class="navbar-brand">HOME</div>
       <div style="width: 100%"></div>
       <div class="navbar-collapse collapse" id="navbarNav">
         <ul class="navbar-nav">
           {{#if loggedIn}}
           <li class="nav-item">
             <a class="nav-link" href='/admin.html'>ADMIN</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href='/users.html'>USERS</a>
           </li>
           <li class="nav-item">
             <a class="nav-link" href='/logout.html'>LOGOUT</a>
@@ -45,7 +47,8 @@
           <li class="nav-item">
             <a class="nav-link" href="/login.html">LOGIN</a>
           </li>
-          {{/if}} {{#if home}}
+          {{/if}} 
+          {{#if home}}
           <li class='nav-item'>
             <a class='nav-link' href='/'>HOME</a>
           </li>
@@ -59,20 +62,17 @@
     <div class="alert alert-success text-center">{{message}}</div>
   </div>
   {{/if}}
-  
+
   <!-- end of navigation -->
   <div class='container'>
     {{{content}}}
   </div>
 
-
+  <!-- footer -->
   <footer>
-    <!-- footer -->
     <div class='container-fluid mt-4 pt-6 bg-light text-dark fixed-bottom'>
-      <div class='row justify-content-center'>
-        <div class 'col'>
-          <p>Copyright &copy 2017 Brian Barth</p>
-        </div>
+      <div class='row justify-content-center mt-3'>
+        <p>Copyright &copy 2017 Brian Barth</p>
       </div>
     </div>
   </footer>
